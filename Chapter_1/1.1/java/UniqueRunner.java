@@ -1,5 +1,5 @@
 import java.io.*;
-import java.util.String;
+import java.lang.String;
 
 public class UniqueRunner
 {

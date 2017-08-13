@@ -1,4 +1,4 @@
-import java.util.String;
+import java.lang.String;
 
 /**
 Problem 1.1 from Cracking the Coding Interview
@@ -29,7 +29,7 @@ public class UniqueLetterDeterminer
 		word = aword;
 	}
 	//method to determine if a string has all unique characters
-	public bool isUnique()
+	public boolean isUnique()
 	{
 		return false;
 	}
