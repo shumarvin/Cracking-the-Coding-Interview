@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class UniqueRunner
 {
 	//constants for input and output files
-	public static final String INPUT_FILE = "tests/test.txt";
-	public static final String OUTPUT_FILE = "tests/output.txt";
+	public static final String INPUT_FILE = "./tests/test.txt";
+	public static final String OUTPUT_FILE = "./tests/output.txt";
 
 	public static void main(String args[]) throws IOException
 	{
@@ -17,7 +17,12 @@ public class UniqueRunner
 		{
 			//get input and output files
 			File in = new File(INPUT_FILE);
-			BufferedWriter out = new BufferedWriter(new FileWriter(OUTPUT_FILE));
+			File out = new File(OUTPUT_FILE);
+
+			if(!out.exists())
+				out.createNewFile();
+
+			BufferedWriter output = new BufferedWriter(new FileWriter(out));
 
 			//create scanner
 			Scanner scan = new Scanner(in);
@@ -25,15 +30,20 @@ public class UniqueRunner
 			//read from input file and write to output file
 			while (scan.hasNextLine())
 			{
-				uld.setWord(scan.nextLine());
-				out.write(uld.isUnique() + "");
-				out.newLine();
+				String word = scan.nextLine();
+				uld.setWord(word);
+				if(uld.isUnique())
+					output.write("true");
+				else
+					output.write("false");
+				output.newLine();
+				uld.resetTable();
 			}
+			output.close();
 		}
 		catch(FileNotFoundException e)
 		{
 			e.printStackTrace();
 		}
-
 	}
 }
