@@ -3,8 +3,7 @@
 
 #include <string>
 
-const int SIZE = 127;
-int table[SIZE];
 
-bool isUnique(string word);
+bool isUnique(std::string word);
+
 #endif
