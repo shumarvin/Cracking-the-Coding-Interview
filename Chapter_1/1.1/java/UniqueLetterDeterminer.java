@@ -7,7 +7,7 @@ Assume ASCII characters
 */
 public class UniqueLetterDeterminer
 {
-	public static final int TABLE_SIZE = 127;
+	public static final int TABLE_SIZE = 256;
 	private String word;
 	private int[] table = new int[TABLE_SIZE];                //Array with each index correspoding to each char's ASCII value    
 

@@ -19,6 +19,7 @@ public class UniqueRunner
 			File in = new File(INPUT_FILE);
 			File out = new File(OUTPUT_FILE);
 
+			//create new output file if it doesn't exist
 			if(!out.exists())
 				out.createNewFile();
 
