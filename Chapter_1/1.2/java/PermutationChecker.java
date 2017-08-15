@@ -53,12 +53,7 @@ public class PermutationChecker
 		String sort2 = sortString(word2);
 
 		//compare
-		for(int i = 0; i < sort1.length(); i++)
-		{
-			if(sort1.charAt(i) != sort2.charAt(i))
-				return false;
-		}
-		return true;
+		return sort1.equals(sort2);
 	}
 
 	//helper method to sort strings

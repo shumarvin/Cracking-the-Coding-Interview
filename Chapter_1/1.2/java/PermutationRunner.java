@@ -33,8 +33,6 @@ public class PermutationRunner
 			{
 				//get words
 				String[] words = scan.nextLine().split(" ");
-				for(int i = 0; i < 2; i++)
-					System.out.println(words[i]);
 				pc.setWord1(words[0]);
 				pc.setWord2(words[1]);
 				if(pc.isPermutation())
