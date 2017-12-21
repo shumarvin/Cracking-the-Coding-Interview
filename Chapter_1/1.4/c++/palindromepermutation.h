@@ -2,6 +2,7 @@
 #define PALINDROME_PERMUTATION
 #include <string>
 
+static int const NUMCHARS = 26;
 
 bool isPalindromePermutation(std::string str);
 int getCharIndex(char c);

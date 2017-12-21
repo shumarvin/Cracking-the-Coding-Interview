@@ -14,6 +14,18 @@ namespace test
 		{
 			Assert::AreEqual(true, isPalindromePermutation("aba"));
 		}
+		TEST_METHOD(getCharIndexTestF)
+		{
+			Assert::AreEqual(5, getCharIndex('f'));
+		}
+		TEST_METHOD(getCharIndexTestA)
+		{
+			Assert::AreEqual(0, getCharIndex('a'));
+		}
+		TEST_METHOD(getCharIndexTestZ)
+		{
+			Assert::AreEqual(25, getCharIndex('z'));
+		}
 
 	};
 }

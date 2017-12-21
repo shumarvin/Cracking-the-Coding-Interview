@@ -4,15 +4,26 @@
 
 bool isPalindromePermutation(std::string str)
 {
+	int* freqTable = getCharFreq(str);
 	return false;
 }
 int getCharIndex(char c)
 {
-	return 0;
+	int asciiA = 'a';
+	int asciiZ = 'z';
+	int asciiChar = c;
+	if (asciiA <= asciiChar && asciiChar <= asciiZ)
+		return asciiChar - asciiA;
+	return -1;
 }
 int* getCharFreq(std::string str)
 {
-	return NULL;
+	int * freqTable = new int[NUMCHARS];
+	for (int i = 0; i < str.length(); i++)
+	{
+
+	}
+	return freqTable;
 }
 bool checkOddCount(int* freqTable)
 {
