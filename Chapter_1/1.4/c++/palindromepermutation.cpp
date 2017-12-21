@@ -11,7 +11,7 @@ int getCharIndex(char c)
 {
 	int asciiA = 'a';
 	int asciiZ = 'z';
-	int asciiChar = c;
+	int asciiChar = tolower(c);
 	if (asciiA <= asciiChar && asciiChar <= asciiZ)
 		return asciiChar - asciiA;
 	return -1;

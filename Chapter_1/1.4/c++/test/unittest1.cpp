@@ -26,6 +26,9 @@ namespace test
 		{
 			Assert::AreEqual(25, getCharIndex('z'));
 		}
-
+		TEST_METHOD(getCharIndexTestExclamationPoint)
+		{
+			Assert::AreEqual(-1, getCharIndex('!'));
+		}
 	};
 }
