@@ -8,7 +8,7 @@ static int const NUMCHARS = 26;
 bool isPalindromePermutation(std::string str);
 int getCharIndex(char c);
 std::array<int, NUMCHARS> getCharFreq(std::string str);
-bool checkOddCount(int* freqTable);
+bool checkOddCount(std::array<int, NUMCHARS> freqTable);
 
 
 #endif 

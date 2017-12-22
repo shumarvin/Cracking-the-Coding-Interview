@@ -48,9 +48,37 @@ namespace test
 			int testArr[NUMCHARS] = {};
 			Assert::AreEqual(true, (std::equal(std::begin(testArr), std::end(testArr), std::begin(getCharFreq("")))));
 		}
+		TEST_METHOD(checkOddCountFalse1)
+		{
+			Assert::AreEqual(false, checkOddCount(getCharFreq("abcdefghijklmnopqrstuvwxyz")));
+		}
+		TEST_METHOD(checkOddCountTrue1)
+		{
+			Assert::AreEqual(true, checkOddCount(getCharFreq("Racecar")));
+		}
+		TEST_METHOD(checkOddCountTrue2)
+		{
+			Assert::AreEqual(true, checkOddCount(getCharFreq("Tact Coa")));
+		}
+		TEST_METHOD(checkOddCountFalse2)
+		{
+			Assert::AreEqual(false, checkOddCount(getCharFreq("abb aba")));
+		}
 		TEST_METHOD(isPalindromePermutationTrue1)
 		{
 			Assert::AreEqual(true, isPalindromePermutation("aba"));
+		}
+		TEST_METHOD(isPalindromePermutationFalse1)
+		{
+			Assert::AreEqual(false, isPalindromePermutation("abcdefghijklmnopqrstuvwxyz"));
+		}
+		TEST_METHOD(isPalindromePermutationTrue2)
+		{
+			Assert::AreEqual(true, isPalindromePermutation("Tact Coa"));
+		}
+		TEST_METHOD(isPalindromePermutationFalse2)
+		{
+			Assert::AreEqual(false, isPalindromePermutation("abb aba"));
 		}
 	};
 }
