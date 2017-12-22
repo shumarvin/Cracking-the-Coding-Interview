@@ -33,7 +33,12 @@ public class RemoveDups<T>
         }
         return list;
     }
-
+    /*
+        Same function as above, except it doesn't use any temporary
+        buffers. Instead, for each element, it traverses the rest
+        of the linked list to remove any duplicates.
+        @return list the linkedlist without any duplicates
+     */
     public LinkedList<T> removeDups2()
     {
         for(Iterator<T> iterator = list.iterator(); iterator.hasNext();)
