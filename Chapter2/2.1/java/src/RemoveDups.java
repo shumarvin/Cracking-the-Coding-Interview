@@ -1,3 +1,4 @@
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Hashtable;
 
@@ -22,19 +23,30 @@ public class RemoveDups<T>
     public LinkedList<T> removeDups()
     {
         Hashtable<T, Boolean> hashTable = new Hashtable<>();
-        list.forEach((currentNode)->
+        for(Iterator<T> iterator = list.iterator(); iterator.hasNext();)
         {
+            T currentNode = iterator.next();
             if(hashTable.contains((currentNode)))
-                hashTable.remove((currentNode));
+                iterator.remove();
             else
                 hashTable.put(currentNode,true);
-        });
+        }
         return list;
     }
 
     public LinkedList<T> removeDups2()
     {
-        return null;
+        for(Iterator<T> iterator = list.iterator(); iterator.hasNext();)
+        {
+            T currentNode = iterator.next();
+            for(Iterator<T> iterator1 = iterator; iterator1.hasNext();)
+            {
+                T nextNode = iterator1.next();
+                if(nextNode.equals((currentNode)))
+                    iterator1.remove();
+            }
+        }
+        return list;
     }
 }
 
