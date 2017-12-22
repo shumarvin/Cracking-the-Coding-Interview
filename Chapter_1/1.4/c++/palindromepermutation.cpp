@@ -1,10 +1,11 @@
 #include "palindromepermutation.h"
 
 #include <string>
+#include <array>
 
 bool isPalindromePermutation(std::string str)
 {
-	int* freqTable = getCharFreq(str);
+	std::array<int, NUMCHARS> freqTable = getCharFreq(str);
 	return false;
 }
 int getCharIndex(char c)
@@ -16,12 +17,14 @@ int getCharIndex(char c)
 		return asciiChar - asciiA;
 	return -1;
 }
-int* getCharFreq(std::string str)
+std::array<int,NUMCHARS> getCharFreq(std::string str)
 {
-	int * freqTable = new int[NUMCHARS];
+	std::array<int, NUMCHARS> freqTable = { };
 	for (int i = 0; i < str.length(); i++)
 	{
-
+		int index = getCharIndex(str[i]);
+		if (index != -1)
+			freqTable[index]++;
 	}
 	return freqTable;
 }
