@@ -36,5 +36,19 @@ of the linked list to remove any duplicates.
 template <typename T>
 void removeDups2(typename std::list<T> &lst)
 {
-	return;
+	typename std::list<T>::iterator it1 = lst.begin();
+	typename std::list<T>::iterator it2;
+	while (it1 != lst.end())
+	{
+		it2 = it1;
+		++it2;
+		while (it2 != lst.end())
+		{
+			if (*it1 == *it2)
+				it2 = lst.erase(it2);
+			else
+				++it2;
+		}
+		++it1;
+	}
 }
