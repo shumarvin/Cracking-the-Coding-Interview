@@ -14,7 +14,7 @@ public class ReturnKthToLast<T>
         2nd-to-last is the 3rd-to-last element, and so on.
         @return T the kth to last element of the list
      */
-    public Node returnKthToLast(int k)
+    public Node<T> returnKthToLast(int k)
     {
 
         //if k is the size of the list-1, then return the 1st element
@@ -38,15 +38,13 @@ public class ReturnKthToLast<T>
         //will only reach this point if k == 0
         return currentNode;
     }
-    /*
-    public T returnKThToLastRecursive(int k)
+    public Node<T> returnKThToLastRecursive(int k)
     {
         Counter counter = new Counter();
-        return returnKthToLastRecursiveHelper(list.getFirst(), counter, k);
+        return returnKthToLastRecursiveHelper(list.getHead(), counter, k);
     }
-    private T returnKthToLastRecursiveHelper(T currentNode, Counter counter, int k)
+    private Node<T> returnKthToLastRecursiveHelper(Node<T> currentNode, Counter counter, int k)
     {
         return currentNode;
     }
-    */
 }
