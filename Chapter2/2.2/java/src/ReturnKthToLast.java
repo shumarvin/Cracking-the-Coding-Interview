@@ -38,13 +38,41 @@ public class ReturnKthToLast<T>
         //will only reach this point if k == 0
         return currentNode;
     }
+   /*
+    Public interface for recursive version. Actual logic is in
+    private method
+    */
     public Node<T> returnKThToLastRecursive(int k)
     {
         Counter counter = new Counter();
         return returnKthToLastRecursiveHelper(list.getHead(), counter, k);
     }
+    /*
+        Recursive version where you don't know the size
+        of the linked list. In order to do recursion,
+        need to keep track of which node you are on
+        and the number of nodes you have checked,
+        which is why a custom Counter class is used,
+        since you can't return more than one thing.
+        @param currentNode the current Node of the list
+        @param counter the number of times recursive call returns
+        @param k the kth to last node
+        @return Node<T> the kth to last node of the list
+        (same qualifications as above)
+     */
     private Node<T> returnKthToLastRecursiveHelper(Node<T> currentNode, Counter counter, int k)
     {
-        return currentNode;
+        //base case
+        if(currentNode.getNextNode() == null)
+            return currentNode;
+
+        //recursive calls until base case
+        Node<T> returnedNode = returnKthToLastRecursiveHelper(currentNode.getNextNode(), counter, k);
+        //increment count to keep track of number of recursive calls returned
+        counter.incrementCount();
+        if(counter.getCount() == k)
+            return currentNode;
+
+        return returnedNode;
     }
 }
