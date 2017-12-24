@@ -44,4 +44,8 @@ public class ReturnKthToLast<T>
         }
         return null;
     }
+    public T returnKThToLastRecursive(int k)
+    {
+        return list.getFirst();
+    }
 }
