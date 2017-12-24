@@ -1,12 +1,9 @@
-import java.util.Iterator;
-import java.util.LinkedList;
-
 public class ReturnKthToLast<T>
 {
-    private LinkedList<T> list;
+    private MyLinkedList<T> list;
 
     //constructor
-    public ReturnKthToLast(LinkedList<T> list)
+    public ReturnKthToLast(MyLinkedList<T> list)
     {
         this.list = list;
     }
@@ -15,37 +12,41 @@ public class ReturnKthToLast<T>
         Returns kth to last element of list, where 0<=k<=list.size()-1
         Here, 1st-to-last is the 2nd-to-last element of list,
         2nd-to-last is the 3rd-to-last element, and so on.
-        @return T the kth to last element of the list,
-         null if out of range
+        @return T the kth to last element of the list
      */
-    public T returnKthToLast(int k)
+    public Node returnKthToLast(int k)
     {
-        //if k is 0, simply return the last element
-        if(k == 0)
-            return list.getLast();
 
         //if k is the size of the list-1, then return the 1st element
-        if(k == list.size() -1)
-            return  list.getFirst();
+        if(k == list.getSize() -1)
+            return list.getHead();
 
         //start counting from index of last element
-        int count = list.size() - 1;
-        Iterator<T> iterator = list.iterator();
-        while(iterator.hasNext())
+        int count = list.getSize() - 1;
+        Node<T> currentNode = list.getHead();
+        while(currentNode.getNextNode() != null)
         {
             //return the element once count reaches k
             if(count == k)
-                return iterator.next();
+                return currentNode;
             else
             {
                 count--;
-                iterator.next();
+                currentNode = currentNode.getNextNode();
             }
         }
-        return null;
+        //will only reach this point if k == 0
+        return currentNode;
     }
+    /*
     public T returnKThToLastRecursive(int k)
     {
-        return list.getFirst();
+        Counter counter = new Counter();
+        return returnKthToLastRecursiveHelper(list.getFirst(), counter, k);
     }
+    private T returnKthToLastRecursiveHelper(T currentNode, Counter counter, int k)
+    {
+        return currentNode;
+    }
+    */
 }
