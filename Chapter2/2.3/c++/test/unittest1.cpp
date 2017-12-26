@@ -20,15 +20,15 @@ namespace test
 			list->insertNode(new Node<int>{ 90, NULL });
 			list->insertNode(new Node<int>{ 55, NULL });
 
-			LinkedList<int>* actual = new LinkedList<int>(new Node<int>{ 5, NULL });
-			actual->insertNode(new Node<int>{ 23, NULL });
-			actual->insertNode(new Node<int>{ 90, NULL });
-			actual->insertNode(new Node<int>{ 55, NULL });
+			LinkedList<int>* expected = new LinkedList<int>(new Node<int>{ 5, NULL });
+			expected->insertNode(new Node<int>{ 23, NULL });
+			expected->insertNode(new Node<int>{ 90, NULL });
+			expected->insertNode(new Node<int>{ 55, NULL });
 
 			deleteMiddleNode(list->getNode(1));
 
 			for (int i = 0; i < 4; i++)
-				Assert::AreEqual(actual->getNode(i)->data, list->getNode(i)->data);
+				Assert::AreEqual(expected->getNode(i)->data, list->getNode(i)->data);
 		}
 		TEST_METHOD(testDeleteMiddleNode2)
 		{
@@ -38,15 +38,15 @@ namespace test
 			list->insertNode(new Node<int>{ 90, NULL });
 			list->insertNode(new Node<int>{ 55, NULL });
 
-			LinkedList<int>* actual = new LinkedList<int>(new Node<int>{ 5, NULL });
-			actual->insertNode(new Node<int>{ 23, NULL });
-			actual->insertNode(new Node<int>{ 90, NULL });
-			actual->insertNode(new Node<int>{ 55, NULL });
+			LinkedList<int>* expected = new LinkedList<int>(new Node<int>{ 5, NULL });
+			expected->insertNode(new Node<int>{ 1, NULL });
+			expected->insertNode(new Node<int>{ 90, NULL });
+			expected->insertNode(new Node<int>{ 55, NULL });
 
 			deleteMiddleNode(list->getNode(2));
 
 			for (int i = 0; i < 4; i++)
-				Assert::AreEqual(actual->getNode(i)->data, list->getNode(i)->data);
+				Assert::AreEqual(expected->getNode(i)->data, list->getNode(i)->data);
 		}
 		TEST_METHOD(testDeleteMiddleNode3)
 		{
@@ -56,16 +56,15 @@ namespace test
 			list->insertNode(new Node<int>{ 90, NULL });
 			list->insertNode(new Node<int>{ 55, NULL });
 
-			LinkedList<int>* actual = new LinkedList<int>(new Node<int>{ 5, NULL });
-			list->insertNode(new Node<int>{ 1, NULL });
-			actual->insertNode(new Node<int>{ 23, NULL });
-			actual->insertNode(new Node<int>{ 55, NULL });
+			LinkedList<int>* expected = new LinkedList<int>(new Node<int>{ 5, NULL });
+			expected->insertNode(new Node<int>{ 1, NULL });
+			expected->insertNode(new Node<int>{ 23, NULL });
+			expected->insertNode(new Node<int>{ 55, NULL });
 
-			deleteMiddleNode(list->getNode(2));
+			deleteMiddleNode(list->getNode(3));
 
 			for (int i = 0; i < 4; i++)
-				Assert::AreEqual(actual->getNode(i)->data, list->getNode(i)->data);
+				Assert::AreEqual(expected->getNode(i)->data, list->getNode(i)->data);
 		}
-
 	};
 }
