@@ -14,7 +14,6 @@ namespace test
 		
 		TEST_METHOD(return1stToLast)
 		{
-			// TODO: Your test code here
 			LinkedList<int>* list = new LinkedList<int>(new Node<int>{ 5, NULL});
 			list->insertNode(new Node<int>{ 1, NULL });
 			list->insertNode(new Node<int>{ 23, NULL });
