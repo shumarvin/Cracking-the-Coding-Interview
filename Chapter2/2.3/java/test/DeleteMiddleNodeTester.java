@@ -16,7 +16,7 @@ public class DeleteMiddleNodeTester
         expected.insertNode(new Node<>(45,null));
         expected.insertNode(new Node<>(90,null));
         expected.insertNode(new Node<>(80,null));
-        DeleteMiddleNode test = new DeleteMiddleNode(list.getNode(2));
+        DeleteMiddleNode test = new DeleteMiddleNode(list.getNode(1));
         test.deleteMiddleNode();
 
         for(int i = 0; i < expected.getSize(); i++)
@@ -35,7 +35,7 @@ public class DeleteMiddleNodeTester
         expected.insertNode(new Node<>(77,null));
         expected.insertNode(new Node<>(90,null));
         expected.insertNode(new Node<>(80,null));
-        DeleteMiddleNode test = new DeleteMiddleNode(list.getNode(3));
+        DeleteMiddleNode test = new DeleteMiddleNode(list.getNode(2));
         test.deleteMiddleNode();
 
         for(int i = 0; i < expected.getSize(); i++)
@@ -54,7 +54,7 @@ public class DeleteMiddleNodeTester
         expected.insertNode(new Node<>(77,null));
         expected.insertNode(new Node<>(45,null));
         expected.insertNode(new Node<>(80,null));
-        DeleteMiddleNode test = new DeleteMiddleNode(list.getNode(4));
+        DeleteMiddleNode test = new DeleteMiddleNode(list.getNode(3));
         test.deleteMiddleNode();
 
         for(int i = 0; i < expected.getSize(); i++)
