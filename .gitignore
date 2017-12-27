@@ -38,3 +38,6 @@ Thumbs.db
 
 
 *output.txt
+*.vcxproj.*
+*.iml
+*.sln

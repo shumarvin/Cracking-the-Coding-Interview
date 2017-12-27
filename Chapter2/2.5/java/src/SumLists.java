@@ -57,6 +57,7 @@ public class SumLists
         for(int i = list2.getSize(); i < list1.getSize(); i++)
         {
             int node1 = list1.getNode(i).getData();
+            //make sure to include carrybit if necessary
             if(carrybit == 1)
             {
                 if(node1+ carrybit >= 10)
@@ -77,5 +78,14 @@ public class SumLists
         //add extra 1 if necessary
         if(carrybit == 1)
             sum.insertNode(new Node(carrybit, null));
+    }
+    /*
+        Method to add lists together if lists are
+        not in reverse order
+        @return sum the sum in regular order
+    */
+    public MyLinkedList doSumListsNonReverse()
+    {
+        return list1;
     }
 }
