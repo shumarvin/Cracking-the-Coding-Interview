@@ -81,11 +81,86 @@ public class SumLists
     }
     /*
         Method to add lists together if lists are
-        not in reverse order
+        not in reverse order. Unlike the reverse
+        method, this method will be recursive,
+        as you need to go to the last digit place,
+        add them, and then return it back
         @return sum the sum in regular order
     */
     public MyLinkedList doSumListsNonReverse()
     {
-        return list1;
+        MyLinkedList sum = new MyLinkedList();
+
+        /*
+            Whichever list is smaller, pad it with
+            zeroes in the front, then add the two
+            lists together
+         */
+        if(list1.getSize() >= list2.getSize())
+            padZeroes(list2, list1.getSize() - list2.getSize());
+        else
+            padZeroes(list1, list2.getSize() - list1.getSize());
+
+        //call recursive helper
+        int finalCarryBit = doSumListsNonReverseHelper(sum, list1.getHead(), list2.getHead());
+
+        //add extra 1 if necessary
+        if(finalCarryBit == 1)
+            sum.setNewHead(new Node(1, null));
+        return sum;
+    }
+    /*
+        Recursive helper method for doSumListNonReverse
+        WIll recurse through both lists until it ends up at
+        the ones place. It will then add the ones place, and
+        recurse back up. Assumes list1 and list2 are the same size.
+        @return carrybit the carry bit from the previous digit
+        place's calculation
+     */
+    private int doSumListsNonReverseHelper(MyLinkedList<Integer> sum, Node<Integer> node1, Node<Integer> node2)
+    {
+        int carrybit = 0;
+        int num1 = node1.getData();
+        int num2 = node2.getData();
+
+        //base case: one's place
+        if(node1.getNextNode() == null)
+        {
+            //make sure to set carrybit if necessary
+            if(num1 + num2 >= 10)
+            {
+                sum.insertNode(new Node(num1 + num2 - 10, null));
+                carrybit = 1;
+            }
+            else
+                sum.insertNode(new Node(num1 + num2, null));
+        }
+        else
+        {
+            //recursive step
+            carrybit = doSumListsNonReverseHelper(sum, node1.getNextNode(), node2.getNextNode());
+
+            //once recursion returns, add current node's digits and set carrybit if necessary
+            if(num1 + num2 + carrybit >= 10)
+            {
+                sum.setNewHead(new Node(num1 + num2 + carrybit - 10, null));
+                carrybit = 1;
+            }
+            else
+            {
+                sum.setNewHead(new Node(num1 + num2 + carrybit, null));
+                carrybit = 0;
+            }
+        }
+        return carrybit;
+    }
+
+    /*
+        Helper method to pad list with specified number of zeroes
+     */
+    private void padZeroes(MyLinkedList<Integer> list, int numZeroes)
+    {
+        for(int i = 0; i < numZeroes; i++)
+            list.setNewHead(new Node(0, null));
     }
 }

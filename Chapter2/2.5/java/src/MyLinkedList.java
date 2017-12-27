@@ -19,6 +19,13 @@ public class MyLinkedList<T>
         size = 1;
     }
 
+    //sets newHead as the new head of the linked list
+    public void setNewHead(Node<T> newHead)
+    {
+        newHead.setNext(head);
+        head = newHead;
+    }
+
     //insert node into linked list
     public void insertNode(Node<T> node)
     {
