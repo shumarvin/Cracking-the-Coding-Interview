@@ -22,13 +22,18 @@ public class MyLinkedList<T>
     //insert node into linked list
     public void insertNode(Node<T> node)
     {
-        //skip to last node
-        Node currentNode = head;
-        while(currentNode.getNextNode() != null)
-            currentNode = currentNode.getNextNode();
+        if(head == null)
+            head = node;
+        else
+        {
+            //skip to last node
+            Node currentNode = head;
+            while(currentNode.getNextNode() != null)
+                currentNode = currentNode.getNextNode();
 
-        //insert node
-        currentNode.setNext(node);
+            //insert node
+            currentNode.setNext(node);
+        }
         size++;
     }
     //get node at specified index
