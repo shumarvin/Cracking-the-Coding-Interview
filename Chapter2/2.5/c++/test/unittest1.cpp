@@ -44,7 +44,7 @@ namespace test
 			LinkedList<int>* expected = new LinkedList<int>(new Node<int>{ 1, NULL });
 			expected->insertNode(new Node<int>{ 1, NULL });
 			expected->insertNode(new Node<int>{ 0, NULL });
-			expected->insertNode(new Node<int>{ 1, NULL });
+			expected->insertNode(new Node<int>{ 7, NULL });
 
 			LinkedList<int>* actual = doSumListsNonReverse(list1, list2);
 			for (int i = 0; i < expected->getSize(); i++)
