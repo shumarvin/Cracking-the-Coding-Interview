@@ -63,7 +63,6 @@ void doSumListsHelper(LinkedList<int>* sum, LinkedList<int>* list1, LinkedList<i
 /*
 Sums the two lists together, assuming the digits are
 stored in reverse order
-@return sum the sum in reversed order
 */
 LinkedList<int>* doSumLists(LinkedList<int>* list1, LinkedList<int>* list2)
 {
@@ -73,4 +72,9 @@ LinkedList<int>* doSumLists(LinkedList<int>* list1, LinkedList<int>* list2)
 	else
 		doSumListsHelper(sum, list2, list1);
 	return sum;
+}
+
+LinkedList<int>* doSumListsNonReverse(LinkedList<int>* list1, LinkedList<int>* list2)
+{
+	return list1;
 }
