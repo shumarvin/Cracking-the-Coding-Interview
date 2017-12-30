@@ -1,7 +1,6 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class StackArrayTester
 {
@@ -93,6 +92,25 @@ public class StackArrayTester
         assertEquals(2, test.getStackArray()[11]);
     }
     @Test
+    public void testFillEntireStack()
+    {
+        StackArray test = new StackArray(5);
+        try
+        {
+            for (int i = 1; i <= 5; i++)
+                test.push(i, 1);
+            for (int i = 1; i <= 5; i++)
+                test.push(i, 2);
+            for (int i = 1; i <= 5; i++)
+                test.push(i, 3);
+        } catch(StackArray.FullStackException e)
+        {
+            e.printStackTrace();
+        }
+        int[] expected = new int[] {1,2,3,4,5,1,2,3,4,5,1,2,3,4,5};
+        assertArrayEquals(expected, test.getStackArray());
+    }
+    @Test
     public void testPushFullStackOne()
     {
         StackArray test = new StackArray(5);
@@ -133,5 +151,24 @@ public class StackArrayTester
             e.printStackTrace();
         }
         assertThrows(StackArray.FullStackException.class, ()->{test.push(6,3);});
+    }
+    @Test
+    public void testPopEmptyStackOne()
+    {
+        StackArray test = new StackArray(5);
+        int pop = -1;
+        try
+        {
+            test.push(1, 1);
+            pop = test.pop(1);
+
+        }catch(StackArray.FullStackException e)
+        {
+            e.printStackTrace();
+        }
+        assertEquals(1, pop);
+        assertAll(()-> assertEquals(0, test.getStackArray()[0]),
+                ()-> assertEquals(-1, test.getStackHeads()[0]));
+
     }
 }

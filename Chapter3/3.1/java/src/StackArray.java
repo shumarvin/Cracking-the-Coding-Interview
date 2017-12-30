@@ -76,7 +76,7 @@ public class StackArray
 
     public int pop(int stack)
     {
-        return stack;
+        return -1;
     }
 
     public int peek()
@@ -89,9 +89,14 @@ public class StackArray
         return false;
     }
 
+    //getters
     public int[] getStackArray()
     {
         return stackArray;
+    }
+    public int[] getStackHeads()
+    {
+        return stackHeads;
     }
 
     public class FullStackException extends Exception
