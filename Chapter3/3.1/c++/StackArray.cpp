@@ -58,3 +58,10 @@ void StackArray::push(int num, int numStack)
 		stackHeads[numStack - 1]++;
 	}
 }
+
+int StackArray::pop(int numStack)
+{
+	//get head index of requested stack
+	int stackIndex = stackHeads[numStack - 1];
+	return -2;
+}

@@ -27,9 +27,21 @@ public:
 	*/
 	StackArray(int size);
 
-	void push(int num, int numStack);
+	/**
+	Pushes a number onto the specified stack
 
+	@param num the int to push onto the stack
+	@param stackNum the specific stack to push num onto
+	@throws FullStackException if specified stack is
+	already full.
+	*/
+	void push(int num, int numStack);
+	int pop(int numStack);
+
+
+	//getters
 	int* getStackArray() { return stackArray; }
+	int* getStackHeads() { return stackHeads; }
 };
 
 class FullStackException : public std::exception
