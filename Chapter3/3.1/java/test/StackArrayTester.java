@@ -207,7 +207,7 @@ public class StackArrayTester
             e.printStackTrace();
         }
         assertEquals(1, pop);
-        assertAll(()-> assertEquals(1, test.getStackArray()[5]),
+        assertAll(()-> assertEquals(0, test.getStackArray()[5]),
                 ()-> assertEquals(-1, test.getStackHeads()[1]));
 
     }
@@ -229,7 +229,7 @@ public class StackArrayTester
             e.printStackTrace();
         }
         assertEquals(1, pop);
-        assertAll(()-> assertEquals(1, test.getStackArray()[10]),
+        assertAll(()-> assertEquals(0, test.getStackArray()[10]),
                 ()-> assertEquals(-1, test.getStackHeads()[2]));
 
     }

@@ -73,10 +73,37 @@ public class StackArray
             stackHeads[stackNum-1]++;
         }
     }
-
+    /*
+	Pops the head of the specified stack
+	@param numStack the specific stack to pop off
+	@return stackNum the head of the specific stack
+    */
     public int pop(int stack) throws EmptyStackException
     {
-        return -1;
+        //get head index of requested stack
+        int stackHeadIndesx = stackHeads[stack - 1];
+
+        //if stack is empty throw exception
+        if(stackHeadIndesx == -1)
+            throw new EmptyStackException("Error! That stack is empty.");
+
+        //get the head of the stack
+        int stackNum = stackArray[stackHeadIndesx];
+
+        //update stackHeads
+
+        //if it's the last item on the stack, reset
+        //to empty value of -1
+        if(stackHeadIndesx == (stack - 1) * stackSize)
+            stackHeads[stack - 1] = -1;
+        //else just decrease the value by one
+        else
+            stackHeads[stack - 1]--;
+
+        //reset former head to default value
+        stackArray[stackHeadIndesx] = 0;
+
+        return stackNum;
     }
 
     public int peek()
