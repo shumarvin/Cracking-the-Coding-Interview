@@ -49,9 +49,17 @@ class FullStackException : public std::exception
 public:
 	virtual const char* what() const throw()
 	{
-		return "Error! That stack is already full. ";
+		return "Error! That stack is already full.";
 	}
 };
 
+class EmptyStackException : public std::exception
+{
+public:
+	virtual const char* what() const throw()
+	{
+		return "Error! That stack is empty. ";
+	}
+};
 
 #endif

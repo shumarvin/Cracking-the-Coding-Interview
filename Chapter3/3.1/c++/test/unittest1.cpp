@@ -27,6 +27,7 @@ namespace test
 				std::cout<<e.what() <<std::endl;
 			}
 			Assert::AreEqual(1, test->getStackArray()[0]);
+			Assert::AreEqual(0, test->getStackHeads()[0]);
 		}
 		TEST_METHOD(testPushEmptyStackTwo)
 		{
@@ -40,6 +41,7 @@ namespace test
 				std::cout << e.what() << std::endl;
 			}
 			Assert::AreEqual(1, test->getStackArray()[5]);
+			Assert::AreEqual(5, test->getStackHeads()[1]);
 		}
 		TEST_METHOD(testPushEmptyStackThree)
 		{
@@ -53,6 +55,7 @@ namespace test
 				std::cout << e.what() << std::endl;
 			}
 			Assert::AreEqual(1, test->getStackArray()[10]);
+			Assert::AreEqual(10, test->getStackHeads()[2]);
 		}
 		TEST_METHOD(testPushStackOne)
 		{
@@ -68,6 +71,7 @@ namespace test
 			}
 			Assert::AreEqual(1, test->getStackArray()[0]);
 			Assert::AreEqual(2, test->getStackArray()[1]);
+			Assert::AreEqual(1, test->getStackHeads()[0]);
 		}
 		TEST_METHOD(testPushStackTwo)
 		{
@@ -83,6 +87,7 @@ namespace test
 			}
 			Assert::AreEqual(1, test->getStackArray()[5]);
 			Assert::AreEqual(2, test->getStackArray()[6]);
+			Assert::AreEqual(6, test->getStackHeads()[1]);
 		}
 		TEST_METHOD(testPushStackThree)
 		{
@@ -98,6 +103,7 @@ namespace test
 			}
 			Assert::AreEqual(1, test->getStackArray()[10]);
 			Assert::AreEqual(2, test->getStackArray()[11]);
+			Assert::AreEqual(11, test->getStackHeads()[2]);
 		}
 		TEST_METHOD(testFillEntireStack)
 		{
@@ -118,6 +124,9 @@ namespace test
 			int expected[] = {1,2,3,4,5,1,2,3,4,5,1,2,3,4,5};
 			for(int i = 0; i < 15; i++)
 				Assert::AreEqual(expected[i], test->getStackArray()[i]);
+			Assert::AreEqual(4, test->getStackHeads()[0]);
+			Assert::AreEqual(9, test->getStackHeads()[1]);
+			Assert::AreEqual(14, test->getStackHeads()[2]);
 		}
 		TEST_METHOD(testPushFullStackOne)
 		{
@@ -181,6 +190,10 @@ namespace test
 			{
 				std::cout << e.what() << std::endl;
 			}
+			catch (EmptyStackException e)
+			{
+				std::cout << e.what() << std::endl;
+			}
 			Assert::AreEqual(1, pop);
 			Assert::AreEqual(0, test->getStackArray()[0]);
 			Assert::AreEqual(-1, test->getStackHeads()[0]);
@@ -198,6 +211,10 @@ namespace test
 			{
 				std::cout << e.what() << std::endl;
 			}
+			catch (EmptyStackException e)
+			{
+				std::cout << e.what() << std::endl;
+			}
 			Assert::AreEqual(1, pop);
 			Assert::AreEqual(0, test->getStackArray()[5]);
 			Assert::AreEqual(-1, test->getStackHeads()[1]);
@@ -212,6 +229,10 @@ namespace test
 				pop = test->pop(3);
 			}
 			catch (FullStackException e)
+			{
+				std::cout << e.what() << std::endl;
+			}
+			catch (EmptyStackException e)
 			{
 				std::cout << e.what() << std::endl;
 			}
@@ -233,9 +254,13 @@ namespace test
 			{
 				std::cout << e.what() << std::endl;
 			}
+			catch (EmptyStackException e)
+			{
+				std::cout << e.what() << std::endl;
+			}
 			Assert::AreEqual(2, pop);
 			Assert::AreEqual(1, test->getStackArray()[0]);
-			Assert::AreEqual(0, test->getStackHeads()[1]);
+			Assert::AreEqual(0, test->getStackHeads()[0]);
 		}
 		TEST_METHOD(testPopStackTwo)
 		{
@@ -248,6 +273,10 @@ namespace test
 				pop = test->pop(2);
 			}
 			catch (FullStackException e)
+			{
+				std::cout << e.what() << std::endl;
+			}
+			catch (EmptyStackException e)
 			{
 				std::cout << e.what() << std::endl;
 			}
@@ -266,6 +295,10 @@ namespace test
 				pop = test->pop(3);
 			}
 			catch (FullStackException e)
+			{
+				std::cout << e.what() << std::endl;
+			}
+			catch (EmptyStackException e)
 			{
 				std::cout << e.what() << std::endl;
 			}
@@ -294,9 +327,14 @@ namespace test
 			{
 				std::cout << e.what() << std::endl;
 			}
+			catch (EmptyStackException e)
+			{
+				std::cout << e.what() << std::endl;
+			}
 
-			int expected[] = { 1,2,3,4,1,2,3,4,1,2,3,4 };
-			int expectedHeads[] = {3,6,9};
+			int expected[] = { 1,2,3,4,0,1,2,3,4,0,1,2,3,4,0 };
+			int expectedHeads[] = {3,8,13};
+
 			Assert::AreEqual(5, stackOne);
 			Assert::AreEqual(5, stackTwo);
 			Assert::AreEqual(5, stackThree);
@@ -305,6 +343,24 @@ namespace test
 			for (int i = 0; i < 3; i++)
 				Assert::AreEqual(expectedHeads[i], test->getStackHeads()[i]);
 
+		}
+		TEST_METHOD(testPopEmptyStackOneException)
+		{
+			StackArray* test = new StackArray(5);
+			std::function<void()> f = [test] {test->pop(1); };
+			Assert::ExpectException<EmptyStackException>(f);
+		}
+		TEST_METHOD(testPopEmptyStackTwoException)
+		{
+			StackArray* test = new StackArray(5);
+			std::function<void()> f = [test] {test->pop(2); };
+			Assert::ExpectException<EmptyStackException>(f);
+		}
+		TEST_METHOD(testPopEmptyStackThreeException)
+		{
+			StackArray* test = new StackArray(5);
+			std::function<void()> f = [test] {test->pop(3); };
+			Assert::ExpectException<EmptyStackException>(f);
 		}
 	};
 }

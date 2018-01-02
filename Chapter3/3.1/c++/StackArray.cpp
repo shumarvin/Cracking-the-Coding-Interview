@@ -31,7 +31,11 @@ void StackArray::push(int num, int numStack)
 
 	//make sure stack isn't already full
 	if (stackIndex == numStack * stackSize - 1)
+	{
 		throw FullStackException();
+		exit(EXIT_FAILURE);
+	}
+		
 
 	/*
 	Push onto stack.
@@ -63,5 +67,29 @@ int StackArray::pop(int numStack)
 {
 	//get head index of requested stack
 	int stackIndex = stackHeads[numStack - 1];
-	return -2;
+
+	//if stack is empty throw exception
+	if (stackIndex == -1)
+	{
+		throw EmptyStackException();
+		exit(EXIT_FAILURE);
+	}
+	
+	//get the head of the stack
+	int headNum = stackArray[stackIndex];
+
+	//update stackHeads
+
+	//if it's the last item on the stack, reset
+	//to empty value of -1
+	if (stackIndex == (numStack - 1) * stackSize)
+		stackHeads[numStack - 1] = -1;
+	//else just decrease the value by one
+	else
+		stackHeads[numStack - 1]--;
+
+	//reset former head to default value
+	stackArray[stackIndex] = 0;
+
+	return headNum;
 }
