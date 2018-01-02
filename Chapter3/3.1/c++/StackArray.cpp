@@ -62,7 +62,12 @@ void StackArray::push(int num, int numStack)
 		stackHeads[numStack - 1]++;
 	}
 }
+/*
+	Pops the head of the specified stack
 
+	@param numStack the specific stack to pop off
+	@return stackNum the head of the specific stack
+*/
 int StackArray::pop(int numStack)
 {
 	//get head index of requested stack

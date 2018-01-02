@@ -36,6 +36,13 @@ public:
 	already full.
 	*/
 	void push(int num, int numStack);
+
+	/*
+	Pops the head of the specified stack
+
+	@param numStack the specific stack to pop off
+	@return stackNum the head of the specific stack
+	*/
 	int pop(int numStack);
 
 
@@ -43,7 +50,9 @@ public:
 	int* getStackArray() { return stackArray; }
 	int* getStackHeads() { return stackHeads; }
 };
-
+/*
+	Exception thrown if trying to push onto a full stack
+*/
 class FullStackException : public std::exception
 {
 public:
@@ -53,6 +62,9 @@ public:
 	}
 };
 
+/*
+	Exception thrown if trying to pop an empty stack
+*/
 class EmptyStackException : public std::exception
 {
 public:
