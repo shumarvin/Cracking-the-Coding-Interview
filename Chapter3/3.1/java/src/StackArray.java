@@ -74,7 +74,7 @@ public class StackArray
         }
     }
 
-    public int pop(int stack)
+    public int pop(int stack) throws EmptyStackException
     {
         return -1;
     }
@@ -103,5 +103,11 @@ public class StackArray
     {
         public FullStackException() {super();}
         public FullStackException(String message) {super(message);}
+    }
+
+    public class EmptyStackException extends Exception
+    {
+        public EmptyStackException() {super();}
+        public EmptyStackException(String message) {super(message);}
     }
 }
